@@ -1023,14 +1023,22 @@ html.menu-open { overflow: hidden; }
   .gallery__grid { row-gap: 0; align-items: stretch; }
   .photo-slot { grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; margin-top: 20px; }
   .photo-slot:first-child { margin-top: 0; }
-  .photo-slot__frame, .photo-slot > img { margin-bottom: 10px; }
+  .photo-slot__frame, .photo-slot > img, .photo-slot > picture { margin-bottom: 10px; }
   .photo-slot__caption { grid-row: 2 / span 2; grid-template-rows: subgrid; row-gap: 0; }
   .photo-slot__caption > * { align-self: start; }
   .photo-slot__draft { margin-top: 2px; }
 }
-.photo-slot__frame, .photo-slot > img { width: 100%; height: auto; aspect-ratio: var(--ratio); border-radius: var(--r-tile); }
+.photo-slot__frame, .photo-slot > img, .photo-slot > picture { width: 100%; height: auto; aspect-ratio: var(--ratio); border-radius: var(--r-tile); }
 .photo-slot > img { object-fit: cover; background: var(--sand-100); box-shadow: var(--shadow-tile); }
-.photo-slot:has(> img) .photo-slot__frame { display: none; }
+/* A photo arrives as <picture> (AVIF with a JPEG fallback): the picture is the frame, the image fills it, and where a
+   slot's other ratios crop the photo further (1:1 on tablets, 21:9 for the phone's wide tile) object-position keeps
+   the faces. The focal points belong to the photos exported by tools/gallery-build.py. */
+.photo-slot > picture { display: block; overflow: hidden; background: var(--sand-100); box-shadow: var(--shadow-tile); }
+.photo-slot > picture > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.photo-slot--family > picture > img { object-position: 50% 42%; }
+.photo-slot--couple > picture > img { object-position: 50% 38%; }
+.photo-slot--crew > picture > img { object-position: 50% 30%; }
+.photo-slot:has(> img, > picture) .photo-slot__frame { display: none; }
 .photo-slot__frame {
   position: relative;
   display: grid;
