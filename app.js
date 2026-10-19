@@ -91,14 +91,16 @@
 
   /* ---- UI: the header pill takes the surface under it. Each dark or light region carries data-surface;
      the last one (in document order) that contains the pill's midline wins, so a dark panel nested in the
-     cream canvas counts. Nothing under the pill (the page top) keeps the dark pill, as it is without JS. */
+     cream canvas counts. Nothing under the pill (the page top, above the first region) keeps the first
+     region's surface: light on the home page (the sign), dark on the subpages (their dark page hero). */
   const surfaces = header ? [...document.querySelectorAll('[data-surface]')].filter(el => el !== header) : [];
   if(header && surfaces.length){
     const bar = header.querySelector('.site-header__bar') || header;
+    const topSurface = surfaces[0].getAttribute('data-surface') || 'dark';
     let currentSurface = header.getAttribute('data-surface');
     scrollJobs.push(() => {
       const r = bar.getBoundingClientRect(), y = r.top + r.height / 2;
-      let found = 'dark';
+      let found = topSurface;
       surfaces.forEach(el => { const b = el.getBoundingClientRect(); if(b.top <= y && b.bottom > y) found = el.getAttribute('data-surface') || found; });
       if(found !== currentSurface){ currentSurface = found; header.setAttribute('data-surface', found); }
     });
@@ -278,12 +280,12 @@
     // The email rule matches the intake's own (launch/signup-worker.mjs validate()): a dot in the domain is required.
     const emailEl=document.querySelector('#email');
     if(!emailEl.validity.valid||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(fd.get('email')||'').trim()))return fail('Please enter a valid email address.',emailEl);
-    if(phone && !(digits.length===10 || (digits.length===11 && digits.startsWith('1'))))return fail('Please enter a 10-digit U.S. mobile number, or leave the optional phone field blank.',document.querySelector('#phone'));
-    if(fd.get('sms_consent')==='on'&&!phone)return fail('Add a mobile number to choose text updates, or uncheck text consent.',document.querySelector('#phone'));
-    if(fd.get('interest')==='updates' && fd.get('email_consent')!=='on' && fd.get('sms_consent')!=='on')return fail('For campaign updates, choose email updates or text updates below.',document.querySelector('#email-consent'));
+    if(phone && !(digits.length===10 || (digits.length===11 && digits.startsWith('1'))))return fail('Enter a 10-digit U.S. mobile number, or leave the phone blank.',document.querySelector('#phone'));
+    if(fd.get('sms_consent')==='on'&&!phone)return fail('To get texts, add a mobile number, or uncheck the texts box.',document.querySelector('#phone'));
+    if(fd.get('interest')==='updates' && fd.get('email_consent')!=='on' && fd.get('sms_consent')!=='on')return fail('To get campaign updates, check email or texts below.',document.querySelector('#email-consent'));
     const url=new URL(window.location.href),safeSource=v=>String(v||'').replace(/[^a-zA-Z0-9._-]/g,'').slice(0,80);
     const payload={request_id:requestId,name:String(fd.get('name')||'').trim(),email:String(fd.get('email')||'').trim().toLowerCase(),phone:phone?'+1'+digits.slice(-10):'',interest:String(fd.get('interest')),email_consent:fd.get('email_consent')==='on',sms_consent:fd.get('sms_consent')==='on',consent_version:config.consentVersion,consent_text:document.querySelector('#sms-consent-text').textContent,email_consent_text:document.querySelector('#email-consent-text').textContent,submitted_at:new Date().toISOString(),form_started_at:startedAt,website:String(fd.get('website')||''),source:{utm_source:safeSource(url.searchParams.get('utm_source')),utm_medium:safeSource(url.searchParams.get('utm_medium')),utm_campaign:safeSource(url.searchParams.get('utm_campaign')),utm_content:safeSource(url.searchParams.get('utm_content'))}};
-    if(!config.preview&&!config.formEndpoint)return fail('Signup is not connected yet. Please use the published campaign contact link below.');
+    if(!config.preview&&!config.formEndpoint)return fail('Signup isn’t connected yet. Call us at 908-721-6664 instead.');
     button.disabled=true;
     try{
       if(!config.preview){
@@ -293,13 +295,13 @@
           // The intake names a rejected email address ({error:'Invalid email'}): mark and focus that field
           let reason='';try{reason=String((await response.json()).error||'');}catch{}
           if(response.status===400&&reason==='Invalid email')throw Object.assign(new Error('Please enter a valid email address.'),{field:emailEl});
-          throw new Error('We couldn’t submit your request. Please try again or contact the campaign.');
+          throw new Error('That didn’t go through. Try again, or call us at 908-721-6664.');
         }
-        const data=await response.json();if(data.accepted!==true)throw new Error('The campaign has not confirmed this request. Please try again.');
+        const data=await response.json();if(data.accepted!==true)throw new Error('We didn’t get a confirmation back. Please try again.');
       }
       fields.hidden=true;result.replaceChildren();
-      const heading=document.createElement('h3');heading.textContent=config.preview?'Your signup preview':'Thank you for connecting';result.append(heading);
-      const text=document.createElement('p');text.textContent=config.preview?'The flow is complete. Nothing was sent or saved. On the live site, this step will confirm receipt by the campaign.':'Your request was received. Campaign email and text updates follow only the permissions you selected.';result.append(text);
+      const heading=document.createElement('h3');heading.textContent=config.preview?'Your signup preview':'Thank you';result.append(heading);
+      const text=document.createElement('p');text.textContent=config.preview?'That’s the whole flow. Nothing was sent or saved. On the live site, this is where we confirm we got your request.':'Got it. We’ll follow up on your request. You’ll only get campaign updates by email or text if you checked those boxes.';result.append(text);
       const ul=document.createElement('ul');const labels={updates:'Campaign updates',volunteer:'Volunteering','yard-sign':'A yard sign',contact:'Talking with the campaign'}; // the form's own option text
       ['Interest: '+labels[payload.interest],'Email updates: '+(payload.email_consent?'Opted in':'Not selected'),'Text updates: '+(payload.sms_consent?'Opted in':'Not selected')].forEach(s=>{const li=document.createElement('li');const i=s.indexOf(': ');const k=document.createElement('span');k.className='form-result__key';k.textContent=s.slice(0,i+1);const v=document.createElement('span');v.className='form-result__value';v.textContent=' '+s.slice(i+2);li.append(k,v);ul.append(li);});result.append(ul);
       const link=document.createElement('a');link.href='#vote';link.className='link-arrow';
@@ -314,7 +316,7 @@
     }catch(err){
       // Only the messages this code writes itself (plain Errors) reach the visitor; a network failure (TypeError),
       // a response that is not JSON (SyntaxError) or anything else shows the campaign's general message
-      fail(err.name==='AbortError'?'The request timed out. Please try again or contact the campaign.':err.name==='Error'?err.message:'We couldn’t submit your request. Please try again or contact the campaign.',err.field);
+      fail(err.name==='AbortError'?'That timed out. Try again, or call us at 908-721-6664.':err.name==='Error'?err.message:'That didn’t go through. Try again, or call us at 908-721-6664.',err.field);
     }
     // Disabling the button while the request is out drops keyboard focus to the page; a failed request with no
     // field to fix returns it to the button, beside the message

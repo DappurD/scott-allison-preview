@@ -1,8 +1,8 @@
 /* ==========================================================================
    Scott Allison for Clemson City Council: "Aurora Bento"
-   A near-black indigo ground with slow aurora light under the cover, a warm cream
-   canvas sheet rising out of it (Meet Scott, Priorities, Our City, Voting), and the
-   dark ground again for Get Involved and the footer. Tiles with hairline gradient
+   The campaign sign on a light ground at the top, a warm cream canvas sheet rising
+   out of it (Meet Scott, Priorities, Our City, Voting), and the near-black indigo
+   ground with slow aurora light for Get Involved and the footer. Tiles with hairline gradient
    borders, poster-scale condensed type, one adaptive glass header pill, quiet motion.
    Static CSS; app.js adds .js, .motion, .menu-open and the header's data-surface.
 
@@ -98,7 +98,6 @@
   --fs-h4: clamp(1.375rem, 1.1rem + 0.6vw, 1.75rem);    /* tier B: card, form and document headings */
   --fs-h3: clamp(1.75rem, 1.2rem + 1.4vw, 2.5rem);      /* tier B: the priority titles */
   --fs-h2: clamp(2.75rem, 1.7rem + 4.2vw, 5.25rem);
-  --fs-name: min(22vw, 10rem);
   --fs-numeral: clamp(4.5rem, 3rem + 6vw, 7.5rem);
 
   /* Radius scale */
@@ -479,6 +478,10 @@ body { --focus: var(--focus-on-dark); }
 }
 .button--glass:hover { border-color: rgb(255 255 255 / 0.5); background: rgb(255 255 255 / 0.14); }
 .button--glass:hover .icon { transform: translateY(2px); }
+/* Outline pill for the light ground (the cover's second button): purple line and text, a faint purple fill on hover */
+.button--outline { border-color: var(--purple); background: transparent; color: var(--purple); }
+.button--outline:hover { background: rgb(46 26 71 / 0.07); }
+.button--outline:hover .icon { transform: translateY(2px); }
 
 /* Pressed states */
 .button:active { translate: 0 1px; box-shadow: none; }
@@ -486,6 +489,7 @@ body { --focus: var(--focus-on-dark); }
 .button--purple:active { background: var(--violet-700); }
 .button--dark:active { background: var(--indigo-900); }
 .button--glass:active { background: rgb(255 255 255 / 0.2); }
+.button--outline:active { background: rgb(46 26 71 / 0.14); }
 
 .button__chip {
   display: grid;
@@ -550,15 +554,17 @@ body { --focus: var(--focus-on-dark); }
 /* Wordmark: name over an orange rule and the office */
 .wordmark {
   display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  gap: 10px;
   min-height: 44px;
   border-radius: 10px;
   color: inherit;
   text-decoration: none;
   line-height: 1;
 }
+/* The campaign mark (the blue C around the sunset, cut from the banner) beside the name */
+.wordmark__mark { flex: none; width: 40px; height: 40px; }
+.wordmark__text { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
 .wordmark__name {
   font-family: var(--font-display);
   font-size: 1.375rem;
@@ -796,14 +802,16 @@ html.menu-open { overflow: hidden; }
 
 
 /* 6. Cover -------------------------------------------------------------------- */
+/* The campaign sign on a light ground: white light in the middle fading to the warm sand at the edges (the sign's
+   own vignette, in the site's cream); the cream canvas sheet rises out of it below the fact bar. */
 .cover {
   position: relative;
   isolation: isolate;
   overflow: clip;
   contain: paint;
   padding-block: clamp(16px, 2.4vw, 32px) calc(clamp(40px, 6vw, 80px) + var(--r-sheet));
-  background: var(--ink-950);
-  color: var(--ink-on-dark);
+  background: radial-gradient(90% 85% at 50% 34%, var(--white) 0%, var(--paper) 48%, var(--sand-100) 100%);
+  color: var(--ink);
   scroll-margin-top: 100vh;
 }
 .cover__grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--bento-gap); }
@@ -826,71 +834,70 @@ html.menu-open { overflow: hidden; }
     .cover__eyebrow .eyebrow__sep + span { flex-basis: 100%; }
   }
 }
-.hero__title { display: block; }
-.hero__name {
-  display: block;
-  font-family: var(--font-display);
-  font-size: var(--fs-name);
-  font-weight: 800;
-  line-height: 0.84;
-  letter-spacing: -0.014em;
-  text-transform: uppercase;
+/* The sign is the heading: the campaign banner (the blue C around the sunset photo, "Our City Our Council", "Vote
+   Scott Allison") rebuilt as an SVG by tools/brand-build.py: a vector C, the photo in a circle, the banner's own
+   lettering cleaned up at 2x. From 600px it is the one banner, at most 800px wide (from 1000px its height follows
+   the screen, see Media queries); phones get the stacked cut, the mark over the slogan, up to 340px wide. The
+   office line follows it in the display face. */
+.hero__title { display: block; width: 100%; }
+.sign { display: block; width: 100%; max-width: 800px; }
+.sign__img { display: block; width: 100%; height: auto; aspect-ratio: 1099 / 619; }
+@media (max-width: 599.98px) {
+  .sign { max-width: 340px; }
+  .sign__img { aspect-ratio: 700 / 998; }
 }
-/* Each word rises out of its own clipped line once (see Motion) */
-.hero__line { display: block; overflow: clip; padding-bottom: 0.04em; margin-bottom: -0.04em; }
-.hero__word { display: inline-block; }
-.hero__stop { color: var(--orange); }
 .hero__office {
   display: block;
-  margin-top: 0.34em;
-  color: var(--peach-200);
+  margin-top: 16px;
+  color: var(--purple);
   font-family: var(--font-display);
   font-size: clamp(1.625rem, 1.15rem + 1.9vw, 2.5rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.006em;
+  text-transform: uppercase;
 }
 .hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; width: 100%; margin-top: 10px; }
 .hero__btn-short { display: none; }
 
-/* Why Scott, in one line: recombines the approved bio and keeps its "reports" hedge */
-.hero__lede { max-width: 46ch; color: var(--ink-on-dark-muted); font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.3125rem); line-height: 1.45; }
+/* Why Scott, in one line */
+.hero__lede { max-width: 50ch; color: var(--ink-muted); font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.3125rem); line-height: 1.45; }
 
-/* The phone's date line (dark glass, under the name): Election Day and the polls in one place. Shown below 600px
-   only; tablets and desktops carry the same facts in the fact tiles. The fill is the bar's dark glass, not white, so
-   the muted hours line keeps its contrast over the brightest aurora state. */
+/* The phone's date line (a white card under the sign): Election Day and the polls in one place. Shown below 600px
+   only; tablets and desktops carry the same facts in the fact tiles. */
 .cover__when {
   display: none;
   gap: 12px;
   align-items: flex-start;
   width: 100%;
   padding: 10px 16px 10px 14px;
-  border: 1px solid rgb(255 255 255 / 0.16);
+  border: 1px solid var(--line);
   border-radius: 20px;
-  background: rgb(16 9 32 / 0.52);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
   font-size: var(--fs-16);
   line-height: 1.35;
 }
 .cover__when strong { display: block; font-weight: 700; }
-.cover__when-hours { display: block; color: var(--ink-on-dark-muted); font-weight: 600; }
+.cover__when-hours { display: block; color: var(--ink-muted); font-weight: 600; }
 .cover__when-dot { flex: none; width: 10px; height: 10px; margin-top: 6px; border-radius: 50%; background: var(--orange); }
 
 /* The campaign number beside the buttons (600px and up), a 44px target. No indent of its own: the row's 12px gap
    spaces it from the buttons, so when it wraps it starts flush left under them at any width or text size. */
-.hero__call { display: none; color: var(--ink-on-dark-muted); font-size: var(--fs-16); }
+.hero__call { display: none; color: var(--ink-muted); font-size: var(--fs-16); }
 .hero__call a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  color: var(--peach-200);
+  color: var(--regalia);
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: rgb(255 178 122 / 0.6);
+  text-decoration-color: rgb(245 102 0 / 0.5);
   text-decoration-thickness: 2px;
   text-underline-offset: 5px;
   white-space: nowrap;
 }
-.hero__call a:hover { text-decoration-color: var(--peach-300); }
+.hero__call a:hover { text-decoration-color: var(--orange); }
 
 /* Ring-framed portrait: a thin peach-orange-violet ring around a rounded frame; the image fills the frame */
 .portrait { position: relative; display: grid; min-width: 0; min-height: 0; margin: 0; }
@@ -899,7 +906,7 @@ html.menu-open { overflow: hidden; }
   padding: 3px;
   border-radius: calc(var(--r-tile) + 3px);
   background: var(--grad-ring);
-  box-shadow: 0 40px 90px -30px rgb(0 0 0 / 0.8), 0 0 90px -20px rgb(122 79 211 / 0.45);
+  box-shadow: 0 30px 70px -30px rgb(36 21 57 / 0.55), 0 2px 6px rgb(36 21 57 / 0.08);
 }
 .portrait__frame { position: relative; min-height: 240px; overflow: hidden; border-radius: var(--r-tile); background: var(--indigo-800); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1); }
 .portrait__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 47% 10%; filter: saturate(0.82) contrast(1.05); }
@@ -918,7 +925,9 @@ html.menu-open { overflow: hidden; }
   pointer-events: none;
 }
 
-/* Fact tiles */
+/* Fact tiles: solid dark on the light ground (the translucent night glass was made for the aurora) */
+.cover .tile--night { background: var(--grad-dark); box-shadow: var(--shadow-dark); }
+.cover .tile--night::before { background: var(--grad-border-dark); }
 .fact { display: flex; flex-direction: column; justify-content: space-between; gap: 12px; padding: clamp(18px, 2.4vw, 30px) clamp(16px, 2.2vw, 30px); }
 .fact--day { gap: 6px; container-type: inline-size; }
 .fact__numeral { display: flex; align-items: baseline; gap: 10px; margin: 6px 0 2px; font-family: var(--font-display); font-weight: 800; line-height: 0.82; text-transform: uppercase; }
@@ -936,7 +945,7 @@ html.menu-open { overflow: hidden; }
   .fact__cta { flex-direction: column; align-items: flex-start; gap: 10px; }
   .fact__cta-chip { align-self: flex-end; }
 }
-.fact--early:hover { translate: 0 -3px; background-color: rgb(16 9 32 / 0.66); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), 0 30px 60px -28px rgb(0 0 0 / 0.85); }
+.cover .fact--early:hover { translate: 0 -3px; background: var(--indigo-800); box-shadow: var(--shadow-dark); }
 .fact--early .tile__big { margin-top: 2px; }
 .fact__cta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 4px; color: var(--ink-on-dark); font-weight: 700; }
 .fact__cta-text { text-decoration: underline; text-decoration-color: rgb(255 178 122 / 0.55); text-decoration-thickness: 2px; text-underline-offset: 5px; }
@@ -2049,11 +2058,8 @@ html:not(.js) #signup-form fieldset, html:not(.js) .form-alert { display: none; 
   .motion .gallery__grid > :nth-child(4) { transition-delay: 0.24s; }
   /* The four pillars reveal together, never one after another: a cascade would read as a ranking */
 
-  /* Cover: the name rises out of its lines once; the office, date line, lede, actions, portrait and tiles follow */
-  .js .hero__word { animation: rise-word 0.9s var(--ease-out) both; }
-  .js .hero__line:nth-child(2) .hero__word { animation-delay: 0.1s; }
-  .js .cover__eyebrow, .js .hero__office, .js .cover__when, .js .hero__lede, .js .hero__actions, .js .cover__portrait, .js .cover__facts > .tile { animation: rise 0.9s var(--ease-out) both; }
-  .js .hero__office { animation-delay: 0.3s; }
+  /* Cover: the sign rises first; the date line, lede, actions, portrait and tiles follow */
+  .js .cover__eyebrow, .js .hero__title, .js .cover__when, .js .hero__lede, .js .hero__actions, .js .cover__portrait, .js .cover__facts > .tile { animation: rise 0.9s var(--ease-out) both; }
   .js .cover__when, .js .hero__lede { animation-delay: 0.36s; }
   .js .hero__actions { animation-delay: 0.44s; }
   .js .cover__portrait { animation-delay: 0.2s; }
@@ -2072,7 +2078,7 @@ html:not(.js) #signup-form fieldset, html:not(.js) .form-alert { display: none; 
   .js .page-hero__title, .js .page-hero__lede, .js .page-hero .eyebrow { animation: rise 0.9s var(--ease-out) both; }
   .js .page-hero__lede { animation-delay: 0.16s; }
   /* After the entrance has played (app.js adds .is-settled), it is dropped, so a breakpoint change never replays it */
-  html.js.is-settled :is(.hero__word, .cover__eyebrow, .hero__office, .cover__when, .hero__lede, .hero__actions, .cover__portrait, .cover__facts, .cover__facts > .tile, .page-hero__title, .page-hero__lede, .page-hero .eyebrow) { animation: none; }
+  html.js.is-settled :is(.hero__title, .cover__eyebrow, .cover__when, .hero__lede, .hero__actions, .cover__portrait, .cover__facts, .cover__facts > .tile, .page-hero__title, .page-hero__lede, .page-hero .eyebrow) { animation: none; }
 
   /* Aurora light fields move very slowly (transform only), scoped to the cover and the priorities panel */
   .aurora__a { animation: aurora-a 30s ease-in-out infinite alternate; }
@@ -2084,7 +2090,6 @@ html:not(.js) #signup-form fieldset, html:not(.js) .form-alert { display: none; 
   @view-transition { navigation: auto; }
 }
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-@keyframes rise-word { from { transform: translateY(108%); } to { transform: none; } }
 @keyframes aurora-a { from { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); } to { transform: translate3d(4%, 3%, 0) rotate(6deg) scale(1.08); } }
 @keyframes aurora-b { from { transform: translate3d(0, 0, 0) rotate(0deg) scale(1.05); } to { transform: translate3d(-4%, -3%, 0) rotate(-5deg) scale(1); } }
 @keyframes sheet { from { opacity: 0; transform: translateY(-8px) scale(0.985); } to { opacity: 1; transform: none; } }
@@ -2170,7 +2175,9 @@ main[tabindex="-1"]:focus, section[tabindex="-1"]:focus { outline: none; }
   .js .header-cta .button__chip { display: none; }
 }
 @media (max-width: 499.98px) {
-  .js .site-header:not(.doc-header) .site-header__bar { padding-left: 14px; gap: 8px; }
+  .js .site-header:not(.doc-header) .site-header__bar { padding-left: 12px; gap: 8px; }
+  .wordmark { gap: 8px; }
+  .wordmark__mark { width: 34px; height: 34px; }
   /* Capped by the viewport width too, so a larger reader text size cannot push the name under the rigid controls */
   .js .site-header:not(.doc-header) .wordmark__name { padding-bottom: 5px; border-bottom: 2px solid var(--orange); font-size: min(1.25rem, 6vw); }
   .js .site-header:not(.doc-header) .wordmark__office { display: none; }
@@ -2185,8 +2192,11 @@ main[tabindex="-1"]:focus, section[tabindex="-1"]:focus { outline: none; }
 
 /* Very small phones */
 @media (max-width: 359.98px) {
-  .js .site-header:not(.doc-header) .site-header__bar { padding-left: 12px; gap: 6px; }
+  .js .site-header:not(.doc-header) .site-header__bar { padding-left: 10px; gap: 6px; }
   .js .site-header:not(.doc-header) .wordmark__name { font-size: min(1.125rem, 6vw); }
+  /* The home page's pill has no room for the mark beside the name, the button and Menu here */
+  .js .site-header:not(.doc-header) .wordmark__mark { display: none; }
+  .wordmark__mark { width: 30px; height: 30px; }
   .js .header-cta { padding: 0 12px; font-size: 0.9375rem; }
   .preview-note__inner { gap: 4px 12px; }
   .preview-note__dot { display: none; }
@@ -2400,46 +2410,41 @@ main[tabindex="-1"]:focus, section[tabindex="-1"]:focus { outline: none; }
   .wordmark__name { font-size: 1.625rem; }
   .wordmark__office { margin-top: 5px; padding-top: 5px; }
 
-  /* Tall screens (over 1000px) get a little more air above the copy and above the bar, growing with the height.
-     Where the width, not the height, sets the nameplate (see below), the first screen has height to spare under the
-     bar: --cover-lift moves half of that spare height (estimated from the same fold constant), up to 40px, above
-     the copy, so the copy is not pressed against the header (1280x900, 1200x900, 1440x1000). It is 0 wherever the
-     height sets the nameplate (1440x900, 1366x768, 1536x864), and from 1600px, where the portrait's min-height
-     spends that height instead. A larger reader text size makes the copy and the bar taller (about 36px per px of
-     root size) while the fold constant stays put, so the estimate gives back 30px per px over 16px: no lift there. */
+  /* Tall screens (over 1000px) get a little more air above the sign and above the bar, growing with the height */
   .cover {
     --cover-air: clamp(0px, (100svh - 1000px) * 0.25, 24px);
-    --cover-lift: clamp(0px, (100svh - var(--name-fold) - 2 * var(--cover-air) - 1.68 * var(--name-size) - 30 * (1rem - 16px)) / 2, 40px);
-    padding-top: calc(16px + var(--cover-air) + var(--cover-lift));
+    padding-top: calc(16px + var(--cover-air));
   }
   .cover__grid { grid-template-columns: minmax(0, 1fr); gap: calc(24px + var(--cover-air)); }
-  .cover__top { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: clamp(32px, 4vw, 64px); align-items: center; }
-  .cover__copy, .cover__portrait, .fact--day, .fact--polls, .fact--ballot, .fact--early { grid-column: auto; grid-row: auto; }
-  .cover__copy { padding-block: 0; gap: 18px; }
-  .cover__portrait { --portrait-max: 400px; justify-self: end; width: 100%; max-width: var(--portrait-max); }
-  .portrait__ring { padding: 4px; border-radius: calc(var(--r-tile) + 6px); }
-  .portrait__frame { aspect-ratio: 4 / 5; min-height: 0; border-radius: calc(var(--r-tile) + 2px); }
-  .portrait__frame img { object-position: 47% 4%; }
-  /* The nameplate scales with the width and the height together, with no steps (the bar moves 1.68px per px of
-     name: two lines at 0.84). It is the larger of the laptop size (--name-low) and the size that still ends the
-     whole bar 24px above the fold ((100svh - --name-fold) / 1.68), within the width size (--name-high), the size
-     that keeps the bar's eyebrows and values on the first screen ((100svh - --name-values) / 1.68) and the cap.
-     So the whole bar fits from about 870px tall (1440x900, 1600x900, 1920x947 and up), the values fit on laptops
-     (1366x768, 1536x730), and short screens shrink it toward the 5.5rem floor. The constants include the preview
-     note (44px); the public build has that much more room. The constants and the size live on .cover, so the
-     cover's top padding (--cover-lift above) reads the same values. */
-  .cover {
-    --name-low: min(9vw, 9rem);
-    --name-high: 10.6vw;
-    --name-cap: 10.5rem;
-    --name-fold: 644px;
-    --name-values: 544px;
-    --name-size: clamp(5.5rem, min(max(var(--name-low), (100svh - var(--name-fold) - 2 * var(--cover-air)) / 1.68), var(--name-high), (100svh - var(--name-values)) / 1.68), var(--name-cap));
+  /* The sign row. The copy wrapper dissolves and its parts take the rows of one grid: the eyebrow; the sign, with
+     the portrait at its right (as tall as the sign, at 4:5); the lede; the actions. --sign-h is the sign's height.
+     It follows the viewport height, so the bar stays on the first screen (304px on a 1366x768 laptop, 400px at
+     1440x900, 500px from about 1000px tall), and the row's width, so the sign and the portrait always fit side by
+     side (the sign is 1.775 times as wide as it is tall, the portrait 0.8). The rows tighten with the height on
+     short laptops (12px from about 657px tall, 18px from 704px). */
+  .cover__top {
+    --sign-h: clamp(304px, min(100svh - 500px, (100cqw - 64px) / 2.6), 500px);
+    container-type: inline-size;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: clamp(32px, 4vw, 64px);
+    row-gap: clamp(12px, (100svh - 560px) / 8, 18px);
+    align-items: start;
   }
-  .hero__name { font-size: var(--name-size); }
-  .hero__actions { margin-top: 4px; }
+  .cover__copy { display: contents; }
+  .cover__eyebrow { grid-column: 1; grid-row: 1; }
+  .hero__title { grid-column: 1; grid-row: 2; }
+  .hero__lede { grid-column: 1; grid-row: 3; }
+  .hero__actions { grid-column: 1; grid-row: 4; margin-top: 4px; }
+  .sign { max-width: none; }
+  .sign__img { width: auto; height: var(--sign-h); }
+  .cover__portrait { grid-column: 2; grid-row: 2; width: calc(var(--sign-h) * 0.8); height: var(--sign-h); }
+  .fact--day, .fact--polls, .fact--ballot, .fact--early { grid-column: auto; grid-row: auto; }
+  .portrait__ring { padding: 4px; border-radius: calc(var(--r-tile) + 6px); }
+  .portrait__frame { aspect-ratio: auto; min-height: 0; border-radius: calc(var(--r-tile) + 2px); }
+  .portrait__frame img { object-position: 47% 4%; }
 
-  /* The four facts become one dark-glass instrument bar: one fill, one masked hairline, outer radii only, the
+  /* The four facts become one dark instrument bar: one fill, one masked hairline, outer radii only, the
      cells divided by 1px light lines. Subgrid gives every cell the same three rows (eyebrow / value / sub-line), so
      the four values share one bottom edge and no cell carries an empty fourth row. */
   .cover__facts {
@@ -2450,8 +2455,8 @@ main[tabindex="-1"]:focus, section[tabindex="-1"]:focus { outline: none; }
     grid-template-rows: auto auto auto;
     gap: 0;
     border-radius: var(--r-tile);
-    background: rgb(16 9 32 / 0.52);
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.07), 0 24px 60px -30px rgb(0 0 0 / 0.7);
+    background: var(--grad-dark);
+    box-shadow: var(--shadow-dark);
   }
   .cover__facts::before {
     content: "";
@@ -2460,7 +2465,7 @@ main[tabindex="-1"]:focus, section[tabindex="-1"]:focus { outline: none; }
     z-index: -1;
     padding: 1px;
     border-radius: inherit;
-    background: var(--grad-border-glass);
+    background: var(--grad-border-dark);
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
@@ -2526,9 +2531,6 @@ main[tabindex="-1"]:focus, section[tabindex="-1"]:focus { outline: none; }
      even right edge beside the three-line head instead of the short fourth line the global pretty wrap leaves */
   .meet:not(:has(.gallery img)) .meet__bio { text-wrap: balance; }
   .meet:not(:has(.gallery img)) .vote411-card__chip { width: 44px; height: 44px; }
-  /* The bar is taller here (its sub-lines wrap) and the call line takes its own row, so the fold constants grow */
-  .cover { --name-high: 9.6vw; --name-cap: 8.75rem; --name-fold: 726px; --name-values: 609px; }
-  .cover__portrait { --portrait-max: 360px; }
 }
 /* 1200-1299px: the bar's cells are a little narrower than "8:30 a.m.–6 p.m. Closed Sunday." (244px at 16px), so the
    early-voting sub-line broke into three lines and left the other cells half empty. The cells take 20px of side
@@ -2620,69 +2622,39 @@ main[tabindex="-1"]:focus, section[tabindex="-1"]:focus { outline: none; }
   html:not(.js) .direct { grid-column: 2; grid-row: 2; align-self: start; margin-top: 24px; }
 }
 
-/* Wide desktops: a larger nameplate cap and office line (the height still decides how much of it is used) */
-@media (min-width: 1400px) {
-  .cover { --name-cap: 11rem; }
-  .hero__office { font-size: 2.75rem; }
-}
-
-/* Big screens (>= 1600px): a wider wrap, larger section heads and rhythm, a portrait up to 500px, so the page stops
-   reading as a boxed 1200px column. The nameplate grows with the height from 9rem toward 13rem (no 940px step).
-   The wrap is fixed from here, so the section heads are too (84px, 88px from about 1915px): a head that kept growing
-   with the window would break one word per line in its fixed column (2240px and wider). */
+/* Big screens (>= 1600px): a wider wrap, larger section heads and rhythm, so the page stops reading as a boxed
+   1200px column (the sign row grows with the height, up to a 500px sign and a 400px portrait). The wrap is fixed
+   from here, so the section heads are too (84px, 88px from about 1915px): a head that kept growing with the window
+   would break one word per line in its fixed column (2240px and wider). */
 @media (min-width: 1600px) {
   :root { --wrap: 1360px; --fs-h2: clamp(5.25rem, 4.6vw, 5.5rem); --tile-pad: 44px; --section-y: 144px; }
-  .cover { --name-low: 9rem; --name-high: 9.4vw; --name-cap: 13rem; --cover-lift: 0px; }
-  .cover__top { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
-  .cover__portrait { --portrait-max: 500px; }
 }
 
-/* Fallback for browsers without size containers (see the portrait rule after the short-landscape block): on laptop
-   heights the portrait follows the viewport height instead, never under 240px of photo (248px with the ring) */
-@media (min-width: 1000px) and (max-height: 940px) {
-  .cover__portrait { max-width: clamp(248px, (100svh - 420px) * 0.76, var(--portrait-max)); }
-}
-
-/* Short laptop windows (a 1366x768 screen shows about 1366x657 in a browser): the copy tightens with the height, with
-   no steps, so the bar's values stay on the first screen with the preview note in place. Unchanged from about 704px
-   (gap) and 720px (lede) tall. */
+/* Short laptop windows (a 1366x768 screen shows about 1366x657 in a browser): the lede tightens with the height, with
+   no steps (unchanged from about 720px tall); the sign row's gaps do the same (see the sign row). */
 @media (min-width: 1000px) {
-  .cover__copy { gap: clamp(12px, (100svh - 560px) / 8, 18px); }
   .hero__lede { font-size: clamp(1.0625rem, min(1rem + 0.35vw, (100svh - 390px) / 15.75), 1.3125rem); }
+}
+
+/* Without container query units the sign's height follows the viewport height and the window width alone */
+@supports not (width: 1cqw) {
+  @media (min-width: 1000px) {
+    .cover__top { --sign-h: clamp(304px, min(100svh - 500px, (100vw - 112px) / 2.6), 436px); }
+  }
 }
 
 /* Short landscape screens (phones turned sideways): keep the cover compact */
 @media (min-width: 560px) and (max-height: 500px) {
-  .hero__name { font-size: min(9vw, 5.5rem); }
+  .sign { max-width: 520px; }
   .cover__copy { padding-block: 12px; }
   .cover__place { display: none; }
-}
-
-/* From 1000px the portrait is as tall as the copy column beside it (eyebrow to buttons), at 4:5, up to
-   --portrait-max wide: the figure is a size container stretched over the row, so below 1600px it never adds height
-   to the row (the bar's position is set by the copy alone) and the photo never shrinks to a thumbnail on short
-   laptops. From 1600px it may open the row a little further (below). */
-@supports (container-type: size) {
-  @media (min-width: 1000px) {
-    .cover__portrait { container-type: size; align-self: stretch; justify-self: stretch; width: auto; max-width: none; }
-    .cover__portrait > .portrait__ring { justify-self: end; align-self: center; width: min(100cqw, 80cqh, var(--portrait-max)); }
-  }
-  /* Big screens: the portrait may be taller than the copy. The figure's min-height opens the row for a
-     --portrait-max portrait (the ring is 80cqh wide: 625px of row for 500px) as far as the first screen allows, so
-     the bar still ends 24px above the fold. 391px = the cover's top edge (128px with the preview note), its 16px
-     padding, the 24px gap, the 199px bar and the 24px margin; --cover-air adds above the copy and above the bar.
-     The portrait is 500px wide from about 1030px tall (1920x1080), follows the height below that with no steps and
-     never pushes the bar past the fold; the copy centres beside it. */
-  @media (min-width: 1600px) {
-    .cover__portrait { min-height: clamp(0px, 100svh - 391px - 2 * var(--cover-air), var(--portrait-max) * 1.25); }
-  }
 }
 
 /* Preferences ------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
-  .aurora__a, .aurora__b, .hero__word { animation: none !important; will-change: auto; }
+  .aurora__a, .aurora__b { animation: none !important; will-change: auto; }
   .vote411-card:hover, .contact-card:hover, .way:hover, .fact--early:hover, .button--orange:hover { translate: none; }
   .pillar__glow { display: none; }
   .vote411-card:active { scale: none; }
@@ -2728,7 +2700,7 @@ main[tabindex="-1"]:focus, section[tabindex="-1"]:focus { outline: none; }
   .cover__when-dot { forced-color-adjust: none; background: CanvasText; }
   /* Each line of text gets a Canvas backplate over its full content area, so tightly set display lines
      would paint over the line above them; they open up here */
-  .motto__line, .hero__name, .fact__numeral, .vote__when, .stat__value, .h2, .page-hero__title, .tile__big { line-height: 1.08; }
+  .motto__line, .fact__numeral, .vote__when, .stat__value, .h2, .page-hero__title, .tile__big { line-height: 1.08; }
   .pillar__icon, .icon-chip, .way__icon, .contact-card__icon, .step__num, .fact__cta-chip, .vote411-card__chip, .button__chip { border: 1px solid CanvasText; }
 }
 

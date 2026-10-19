@@ -3,22 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0E0818">
+  <meta name="theme-color" content="#FBF9F5">
   <meta name="color-scheme" content="light">
   <meta name="robots" content="noindex, nofollow">
   <title>Scott Allison for Clemson City Council | Website Concept</title>
-  <meta name="description" content="Meet Scott Allison, explore his published priorities, and find official information for Clemson’s November 3, 2026 City Council election. Private website concept.">
+  <meta name="description" content="Scott Allison is running for Clemson City Council on November 3, 2026. Where he stands, how to vote, and how to help. Private website concept.">
   <meta property="og:title" content="Scott Allison for Clemson City Council">
-  <meta property="og:description" content="Our City. Our Council. Read his priorities and make a plan to vote.">
+  <meta property="og:description" content="Our City. Our Council. See where Scott stands and make a plan to vote on November 3.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scott-allison-clemson-concept.dduerde.chatgpt.site/">
-  <meta property="og:image" content="https://scott-allison-clemson-concept.dduerde.chatgpt.site/assets/social-share.png">
+  <meta property="og:url" content="https://scottforclemson.com/">
+  <meta property="og:image" content="https://scottforclemson.com/assets/social-share.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <link rel="canonical" href="https://scott-allison-clemson-concept.dduerde.chatgpt.site/">
+  <link rel="canonical" href="https://scottforclemson.com/">
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/brand/mark-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/brand/banner.svg" as="image" type="image/svg+xml" media="(min-width: 600px)">
+  <link rel="preload" href="assets/brand/banner-stack.svg" as="image" type="image/svg+xml" media="(max-width: 599.98px)">
   <link rel="preload" href="assets/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -64,12 +66,16 @@
   </aside>
 
   <!-- One glass pill. app.js sets data-surface to "dark" or "light" from the surface under the pill;
-       without JS it stays the dark pill, whose border reads on both the dark ground and the cream canvas. -->
-  <header class="site-header" data-header data-surface="dark">
+       it starts light (the cover is the light ground) and without JS it stays the light pill, which reads on
+       both the cream canvas and the dark ground. -->
+  <header class="site-header" data-header data-surface="light">
     <div class="site-header__bar">
       <a class="wordmark" href="#home" aria-label="Scott Allison for Clemson City Council, back to top">
-        <span class="wordmark__name">Scott Allison</span>
-        <span class="wordmark__office">For Clemson City Council</span>
+        <img class="wordmark__mark" src="assets/brand/mark.svg" alt="" width="40" height="40" decoding="async">
+        <span class="wordmark__text">
+          <span class="wordmark__name">Scott Allison</span>
+          <span class="wordmark__office">For Clemson City Council</span>
+        </span>
       </a>
       <a class="button button--orange header-cta" href="#join">Get Involved <span class="button__chip" aria-hidden="true"><svg class="icon"><use href="#i-arrow-r"/></svg></span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav"><span class="menu-toggle__label">Menu</span><span class="menu-toggle__icon" aria-hidden="true"><span></span><span></span></span></button>
@@ -79,38 +85,42 @@
           <ul class="site-nav__list">
             <li><a class="site-nav__link" href="#meet">Meet Scott</a></li>
             <li><a class="site-nav__link" href="#priorities">Priorities</a></li>
-            <li><a class="site-nav__link" href="#vote">Voting Information</a></li>
+            <li><a class="site-nav__link" href="#vote">How to Vote</a></li>
           </ul>
         </div>
         <a class="button button--orange site-nav__cta" href="#join"><span class="site-nav__cta-label">Get Involved</span> <span class="button__chip" aria-hidden="true"><svg class="icon"><use href="#i-arrow-r"/></svg></span></a>
-        <p class="site-nav__aside">Prefer to talk? <a href="tel:+19087216664">Call 908-721-6664</a></p>
+        <p class="site-nav__aside">Rather talk? <a href="tel:+19087216664">Call 908-721-6664</a></p>
       </nav>
     </div>
   </header>
 
   <main id="main">
 
-    <!-- Cover: near-black indigo with two slow aurora light fields (scoped to this section), the kinetic
-         nameplate, the "why Scott" lede, the ring-framed portrait and the facts. From 1000px the four facts
-         are one dark-glass instrument bar; on tablets the portrait sits in the fact bento beside Election Day
-         (the two wrappers become display: contents); on phones the date line under the name carries Election
-         Day and the polls, the portrait runs full width and only the early-voting tile follows it. -->
-    <section class="cover" id="home" aria-labelledby="hero-title" data-surface="dark">
-      <div class="aurora" aria-hidden="true"><span class="aurora__a"></span><span class="aurora__b"></span><span class="aurora__grain"></span></div>
+    <!-- Cover: the campaign sign on a light ground. The banner (the blue C around the sunset photo, "Our City
+         Our Council", "Vote Scott Allison") is the h1: one image from 600px, the stacked cut (mark over slogan)
+         on phones. The office line, the "why Scott" lede and the actions follow it. From 1000px the ring-framed
+         portrait stands at the right of the sign, as tall as it, and the four facts are one dark instrument bar;
+         on tablets the portrait sits in the fact bento beside Election Day (the two wrappers become
+         display: contents); on phones the date line under the sign carries Election Day and the polls, the
+         portrait runs full width and only the early-voting tile follows it. -->
+    <section class="cover" id="home" aria-labelledby="hero-title" data-surface="light">
       <div class="wrap">
         <div class="cover__grid">
           <div class="cover__top">
             <div class="cover__copy">
-              <p class="eyebrow eyebrow--on-dark cover__eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><span class="cover__place">Clemson, South Carolina</span><span class="eyebrow__sep cover__place" aria-hidden="true"></span><span>Nonpartisan election</span></p>
+              <p class="eyebrow cover__eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><span class="cover__place">Clemson, South Carolina</span><span class="eyebrow__sep cover__place" aria-hidden="true"></span><span>Nonpartisan election</span></p>
               <h1 class="hero__title" id="hero-title">
-                <span class="hero__name"><span class="hero__line"><span class="hero__word">Scott</span></span> <span class="hero__line"><span class="hero__word">Allison<span class="hero__stop" aria-hidden="true">.</span></span></span></span>
+                <span class="sign"><picture>
+                  <source media="(max-width: 599.98px)" srcset="assets/brand/banner-stack.svg" width="700" height="998">
+                  <img class="sign__img" src="assets/brand/banner.svg" width="1099" height="619" alt="Our City. Our Council. Vote Scott Allison." fetchpriority="high" decoding="async">
+                </picture></span>
                 <span class="hero__office">For Clemson City Council</span>
               </h1>
               <p class="cover__when"><span class="cover__when-dot" aria-hidden="true"></span><span><strong>Election Day: Tuesday, <span class="nowrap">November 3, 2026</span></strong><span class="cover__when-hours">Polls open <span class="nowrap">7 a.m.–7 p.m.</span></span></span></p>
-              <p class="hero__lede">A 1986 Clemson graduate who reports <span class="nowrap">35 years</span> financing government, infrastructure, and higher education.</p>
+              <p class="hero__lede">Clemson grad, class of ’86. <span class="nowrap">Thirty-five</span> years in public finance banking. I’d like to put that to work for the city I call home.</p>
               <div class="hero__actions">
                 <a class="button button--orange button--lg" href="#join">Get Involved <span class="button__chip" aria-hidden="true"><svg class="icon"><use href="#i-arrow-r"/></svg></span></a>
-                <a class="button button--glass button--lg" href="#priorities"><span class="hero__btn-full">Read his priorities</span><span class="hero__btn-short" aria-hidden="true">Priorities</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-d"/></svg></a>
+                <a class="button button--outline button--lg" href="#priorities"><span class="hero__btn-full">See where I stand</span><span class="hero__btn-short" aria-hidden="true">Where I stand</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-d"/></svg></a>
                 <p class="hero__call">Or call <a href="tel:+19087216664">908-721-6664</a></p>
               </div>
             </div>
@@ -119,8 +129,8 @@
               <div class="portrait__ring">
                 <div class="portrait__frame">
                   <picture>
-                    <source type="image/avif" srcset="assets/campaign-facebook-profile-480.avif 480w, assets/campaign-facebook-profile-720.avif 720w, assets/campaign-facebook-profile-960.avif 960w" sizes="(min-width: 1600px) and (min-height: 1000px) 492px, (min-width: 1000px) 400px, (min-width: 600px) 40vw, calc(100vw - 32px)">
-                    <img src="assets/campaign-facebook-profile.jpg" srcset="assets/campaign-facebook-profile.jpg 480w, assets/campaign-facebook-profile-720.jpg 720w, assets/campaign-facebook-profile-960.jpg 960w" sizes="(min-width: 1600px) and (min-height: 1000px) 492px, (min-width: 1000px) 400px, (min-width: 600px) 40vw, calc(100vw - 32px)" alt="Scott Allison, candidate for Clemson City Council, standing outdoors in a blue sport coat" width="480" height="640" fetchpriority="high" decoding="async">
+                    <source type="image/avif" srcset="assets/campaign-facebook-profile-480.avif 480w, assets/campaign-facebook-profile-720.avif 720w, assets/campaign-facebook-profile-960.avif 960w" sizes="(min-width: 1000px) 400px, (min-width: 600px) 40vw, calc(100vw - 32px)">
+                    <img src="assets/campaign-facebook-profile.jpg" srcset="assets/campaign-facebook-profile.jpg 480w, assets/campaign-facebook-profile-720.jpg 720w, assets/campaign-facebook-profile-960.jpg 960w" sizes="(min-width: 1000px) 400px, (min-width: 600px) 40vw, calc(100vw - 32px)" alt="Scott Allison, candidate for Clemson City Council, standing outdoors in a blue sport coat" width="480" height="640" decoding="async">
                   </picture>
                 </div>
               </div>
@@ -166,27 +176,27 @@
           <p class="section-label"><span class="section-label__text">Meet Scott</span></p>
           <div class="meet__grid">
             <div class="meet__intro">
-              <h2 class="h2" id="meet-title" data-reveal>Experience in <span class="h2__accent">public finance</span></h2>
-              <p class="meet__bio" data-reveal>Scott reports 35 years financing government, infrastructure, and higher education. He is a 1986 Clemson graduate running to bring that experience to the city’s growth decisions.</p>
+              <h2 class="h2" id="meet-title" data-reveal>I know how cities <span class="h2__accent">pay for what they build</span></h2>
+              <p class="meet__bio" data-reveal>I’ve spent 35 years in public finance banking, helping cities, states, utilities, and universities put together the financing for what they build: water and sewer systems, airports and stadiums, campus projects. I graduated from Clemson in 1986, and I live here now. I know how governments and universities think, and I’d like to bring that to the Council as this city works out how to grow.</p>
               <ul class="stats" data-reveal>
                 <li class="stat tile">
                   <span class="stat__value">35 <span class="stat__unit">years</span></span>
-                  <span class="stat__label">Financing government, infrastructure, and higher education, as reported by Scott</span>
+                  <span class="stat__label">In public finance banking</span>
                 </li>
                 <li class="stat tile">
                   <span class="stat__value">1986</span>
-                  <span class="stat__label">Clemson graduate, now running for City Council</span>
+                  <span class="stat__label">The year I graduated from Clemson</span>
                 </li>
               </ul>
               <a class="vote411-card tile tile--dark" href="https://onyourballot.vote411.org/m/race-detail.do?id=68907575" target="_blank" rel="noopener noreferrer" data-reveal>
                 <span class="vote411-card__text">
-                  <span class="vote411-card__kicker">In his own words</span>
-                  <span class="vote411-card__title">Read his candidate questionnaire</span>
-                  <span class="vote411-card__foot">On VOTE411<span class="sr-only"> (opens in a new tab)</span></span>
+                  <span class="vote411-card__kicker">The long version</span>
+                  <span class="vote411-card__title">Read my full VOTE411 answers</span>
+                  <span class="vote411-card__foot">League of Women Voters guide<span class="sr-only"> (opens in a new tab)</span></span>
                 </span>
                 <span class="vote411-card__chip" aria-hidden="true"><svg class="icon"><use href="#i-arrow-ur"/></svg></span>
               </a>
-              <p class="source-note">Biography and priorities summarized from Scott’s own VOTE411 responses.<span class="preview-only"> Campaign copy is a proposed draft.</span></p>
+              <p class="source-note">Most of what you read here comes from my published VOTE411 answers; the class year is from my campaign Facebook page.<span class="preview-only"> Draft wording, for Scott to approve.</span></p>
             </div>
 
             <!-- Photo gallery. While no slot holds a photo it is a compact photo shelf: one note line, then four equal
@@ -198,7 +208,7 @@
                  an empty slot is never shown, and an empty gallery not at all. Once Scott confirms the wording, edit the
                  caption and delete the "Draft caption" tag. -->
             <div class="gallery" role="group" aria-label="Photos">
-              <p class="gallery__note">Family and community photos to come.</p>
+              <p class="gallery__note">Photos coming: family, and around Clemson.</p>
               <div class="gallery__grid">
               <figure class="photo-slot photo-slot--lead" data-slot="family-main" data-reveal>
                 <div class="photo-slot__frame">
@@ -207,7 +217,7 @@
                     <span class="photo-slot__soon">Photo coming soon</span>
                   </div>
                 </div>
-                <figcaption class="photo-slot__caption"><span class="photo-slot__text">Scott with his wife and their three daughters</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">My wife and our three daughters</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
               </figure>
               <figure class="photo-slot" data-slot="family-couple" data-reveal>
                 <div class="photo-slot__frame">
@@ -216,7 +226,7 @@
                     <span class="photo-slot__soon">Photo coming soon</span>
                   </div>
                 </div>
-                <figcaption class="photo-slot__caption"><span class="photo-slot__text">Scott and his wife</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">My wife and me</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
               </figure>
               <figure class="photo-slot" data-slot="family-daughters" data-reveal>
                 <div class="photo-slot__frame">
@@ -225,7 +235,7 @@
                     <span class="photo-slot__soon">Photo coming soon</span>
                   </div>
                 </div>
-                <figcaption class="photo-slot__caption"><span class="photo-slot__text">Their three daughters</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">Our three daughters</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
               </figure>
               <figure class="photo-slot photo-slot--wide" data-slot="around-clemson" data-reveal>
                 <div class="photo-slot__frame">
@@ -248,47 +258,47 @@
       <section class="section-panel priorities" id="priorities" aria-labelledby="priorities-title" data-surface="dark">
         <div class="aurora aurora--panel" aria-hidden="true"><span class="aurora__a"></span><span class="aurora__b"></span><span class="aurora__grain"></span></div>
         <div class="wrap">
-          <p class="section-label section-label--on-dark"><span class="section-label__text">Published positions</span></p>
+          <p class="section-label section-label--on-dark"><span class="section-label__text">Where I stand</span></p>
           <div class="section-intro" data-reveal>
-            <h2 class="h2" id="priorities-title">Scott’s <span class="h2__accent">priorities</span></h2>
-            <p class="section-intro__lede">His published positions on the decisions facing Clemson.</p>
+            <h2 class="h2" id="priorities-title">What I’ll <span class="h2__accent">work on</span></h2>
+            <p class="section-intro__lede">The four things I’m running on, in no particular order.</p>
           </div>
           <ul class="pillars">
             <li class="pillar" data-reveal>
               <span class="pillar__glow" aria-hidden="true"></span>
               <span class="pillar__icon" aria-hidden="true"><svg class="icon"><use href="#i-growth"/></svg></span>
-              <h3 class="pillar__title">Thoughtful growth</h3>
-              <p class="pillar__text">Evaluate projects individually, protect neighborhood compatibility, and encourage earlier <span class="nowrap">public notice.</span></p>
+              <h3 class="pillar__title">Growth that fits Clemson</h3>
+              <p class="pillar__text">Every housing project gets judged on its own merits. Big student and commercial projects belong on the major roads, not up against people’s homes. And you should hear about a project earlier than the law <span class="nowrap">requires.</span></p>
             </li>
             <li class="pillar" data-reveal>
               <span class="pillar__glow" aria-hidden="true"></span>
               <span class="pillar__icon" aria-hidden="true"><svg class="icon"><use href="#i-housing"/></svg></span>
-              <h3 class="pillar__title">Student housing &amp; collaboration</h3>
-              <p class="pillar__text">Work with Clemson University on more <span class="nowrap">on-campus</span> housing and practical financing solutions.</p>
+              <h3 class="pillar__title">Student housing</h3>
+              <p class="pillar__text">The student housing crunch is the biggest issue we have. I’ll work with the University and hold it to building enough housing on campus, and I’ll bring real ideas on how to <span class="nowrap">pay for it.</span></p>
             </li>
             <li class="pillar" data-reveal>
               <span class="pillar__glow" aria-hidden="true"></span>
               <span class="pillar__icon" aria-hidden="true"><svg class="icon"><use href="#i-bike"/></svg></span>
               <h3 class="pillar__title">Safer ways to get around</h3>
-              <p class="pillar__text">Address traffic and infrastructure, including sidewalks, bicycle routes, turn lanes, <span class="nowrap">and transit.</span></p>
+              <p class="pillar__text">Sidewalks, bike paths, turn lanes, and transit. Traffic relief and safety for everybody, whether you’re driving, walking, or <span class="nowrap">biking.</span></p>
             </li>
             <li class="pillar" data-reveal>
               <span class="pillar__glow" aria-hidden="true"></span>
               <span class="pillar__icon" aria-hidden="true"><svg class="icon"><use href="#i-ledger"/></svg></span>
-              <h3 class="pillar__title">Responsible public spending</h3>
-              <p class="pillar__text">Bring financial experience to oversight of tax dollars and other <span class="nowrap">city revenues.</span></p>
+              <h3 class="pillar__title">Careful with tax dollars</h3>
+              <p class="pillar__text">I’ve spent a career reading budgets and bond deals. I’ll bring that eye to how the city spends your tax dollars and every other dollar it <span class="nowrap">takes in.</span></p>
             </li>
           </ul>
           <div class="pillars__more" data-reveal>
-            <a class="button button--glass pillars__link" href="https://onyourballot.vote411.org/m/race-detail.do?id=68907575" target="_blank" rel="noopener noreferrer">Read Scott’s full responses on VOTE411<span class="sr-only"> (opens in a new tab)</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
-            <p class="pillars__note">Summaries of his published VOTE411 responses.</p>
+            <a class="button button--glass pillars__link" href="https://onyourballot.vote411.org/m/race-detail.do?id=68907575" target="_blank" rel="noopener noreferrer">Read my full VOTE411 answers<span class="sr-only"> (opens in a new tab)</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <p class="pillars__note">Short versions of what I told the League of Women Voters.</p>
           </div>
         </div>
       </section>
 
       <!-- Our City. Our Council. The site's one cinematic moment: the Lake Hartwell sunset fills a rounded band the width
            of the canvas (a dark surface, so the header pill turns dark over it) and the line sits on dark scrims at its foot.
-           The credit is a dark chip on the photo's top-right corner from 680px, a caption under the band below that.
+           The CC BY credit for the photo lives in the footer and on the sources page, not on the band.
            sizes follows the painted cover width: on phones and tablets the band is taller than the photo's ratio, and on
            portrait screens the picture is drawn 20% taller than the band (a zoom toward the glow). -->
       <section class="motto" aria-label="Our City. Our Council.">
@@ -303,7 +313,6 @@
             <p class="motto__line"><span>Our City<span class="motto__stop">.</span></span> <span>Our Council<span class="motto__stop">.</span></span></p>
           </div>
         </div>
-        <p class="wrap photo-credit motto__credit">Lake Hartwell, Clemson. Photo: <span class="nowrap">Harrison Keely</span>, <a class="nowrap" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer license">CC BY 4.0<span class="sr-only"> license (opens in a new tab)</span></a>, cropped and color-adjusted</p>
       </section>
 
       <!-- Voting information: a bento of tiles, the orange Election Day card as the focal object -->
@@ -311,8 +320,8 @@
         <div class="wrap">
           <p class="section-label"><span class="section-label__text">Make a plan</span></p>
           <div class="section-intro" data-reveal>
-            <h2 class="h2" id="vote-title">Voting <span class="h2__accent">information</span></h2>
-            <p class="section-intro__lede">Use official election resources to check your voter information, sample ballot, and polling place.</p>
+            <h2 class="h2" id="vote-title">How to <span class="h2__accent">vote</span></h2>
+            <p class="section-intro__lede">Everything below comes from Pickens County and the state election office. Check your own details with them before you go.</p>
           </div>
 
           <div class="bento vote__bento">
@@ -326,7 +335,7 @@
                 <li>8:30 a.m.–6 p.m.</li>
                 <li class="is-closed">Closed Sunday</li>
               </ul>
-              <p class="vote__note">Confirm early voting locations with Pickens County.</p>
+              <p class="vote__note">Pickens County lists the early voting locations.</p>
               <div class="vote__actions">
                 <p class="link-line"><a class="link-arrow" href="https://pickensscelections.gov/" target="_blank" rel="noopener noreferrer">Official <span class="nowrap">locations &amp;</span> <span class="nowrap">instructions<span class="sr-only"> (opens in a new tab)</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></a></p>
                 <a class="cal-link" href="assets/early-voting-2026.ics" download><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Add to calendar<span class="sr-only">: early voting</span></a>
@@ -397,19 +406,19 @@
                 <li class="step">
                   <span class="step__num" aria-hidden="true">1</span>
                   <h4 class="step__title">Confirm your voter details</h4>
-                  <p>Look up your voter information and polling place with the South Carolina Election Commission.</p>
+                  <p>Look up your voter information and polling place with the state election office.</p>
                   <p class="link-line"><a class="link-arrow" href="https://vrems.scvotes.sc.gov/Voter/Login" target="_blank" rel="noopener noreferrer"><span class="nowrap">Check my voter</span> <span class="nowrap">information<span class="sr-only"> (opens in a new tab)</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></a></p>
                 </li>
                 <li class="step">
                   <span class="step__num" aria-hidden="true">2</span>
                   <h4 class="step__title">Review your sample ballot</h4>
-                  <p>Confirm the ballot instructions with your official sample ballot.</p>
+                  <p>Look over the sample ballot ahead of time.</p>
                   <p class="link-line"><a class="link-arrow" href="https://pickensscelections.gov/2020/06/17/accessing-sample-ballots/" target="_blank" rel="noopener noreferrer"><span class="nowrap">Find official sample</span> <span class="nowrap">ballot resources<span class="sr-only"> (opens in a new tab)</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></a></p>
                 </li>
                 <li class="step">
                   <span class="step__num" aria-hidden="true">3</span>
                   <h4 class="step__title">Bring an accepted photo ID</h4>
-                  <p>If obtaining one is difficult, see the official guidance on voting with a reasonable impediment affidavit.</p>
+                  <p>If getting one is hard, the state explains how to vote with a reasonable impediment affidavit.</p>
                   <p class="link-line"><a class="link-arrow" href="https://scvotes.gov/voters/photo-id-requirements/" target="_blank" rel="noopener noreferrer">Photo ID and reasonable <span class="nowrap">impediment guidance<span class="sr-only"> (opens in a new tab)</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></a></p>
                 </li>
               </ol>
@@ -418,7 +427,7 @@
             <aside class="tile questions vote__questions" aria-labelledby="questions-title" data-reveal>
               <span class="icon-chip icon-chip--dark" aria-hidden="true"><svg class="icon"><use href="#i-phone"/></svg></span>
               <h3 class="questions__title" id="questions-title">Voting questions?</h3>
-              <p>Confirm dates, locations, and ballot details with the Pickens County elections office.</p>
+              <p>The Pickens County elections office has the final word on dates, locations, and ballots.</p>
               <div class="questions__actions">
                 <a class="questions__phone" href="tel:+18648985948"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span class="questions__phone-text"><span class="questions__phone-label">Call Pickens County:</span> <span class="questions__phone-num nowrap">864-898-5948</span></span></a>
                 <a class="link-arrow" href="https://pickensscelections.gov/" target="_blank" rel="noopener noreferrer">Pickens County <span class="nowrap">elections<span class="sr-only"> (opens in a new tab)</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></a>
@@ -436,11 +445,11 @@
         <div class="join__copy">
           <p class="section-label section-label--on-dark"><span class="section-label__text">Ways to help</span></p>
           <h2 class="h2" id="join-title" data-reveal>Get <span class="h2__accent">involved</span></h2>
-          <p class="join__intro" data-reveal>Volunteer, request a yard sign, or sign up for campaign updates.</p>
+          <p class="join__intro" data-reveal>A council race is a small one. It comes down to people talking to the people next door. Give an hour, put up a yard sign, or just keep up with how it’s going. I’d be grateful for any of it.</p>
           <ul class="ways" data-reveal>
-            <li><a class="way tile tile--glass" href="#signup-form" data-interest="volunteer"><span class="way__icon" aria-hidden="true"><svg class="icon"><use href="#i-heart"/></svg></span><span class="way__label">Volunteer your time</span><svg class="icon way__arrow" aria-hidden="true"><use href="#i-arrow-r"/></svg></a></li>
-            <li><a class="way tile tile--glass" href="#signup-form" data-interest="yard-sign"><span class="way__icon" aria-hidden="true"><svg class="icon"><use href="#i-sign"/></svg></span><span class="way__label">Request a yard sign</span><svg class="icon way__arrow" aria-hidden="true"><use href="#i-arrow-r"/></svg></a></li>
-            <li><a class="way tile tile--glass" href="#signup-form" data-interest="updates"><span class="way__icon" aria-hidden="true"><svg class="icon"><use href="#i-mail"/></svg></span><span class="way__label">Stay connected</span><svg class="icon way__arrow" aria-hidden="true"><use href="#i-arrow-r"/></svg></a></li>
+            <li><a class="way tile tile--glass" href="#signup-form" data-interest="volunteer"><span class="way__icon" aria-hidden="true"><svg class="icon"><use href="#i-heart"/></svg></span><span class="way__label">Give some time</span><svg class="icon way__arrow" aria-hidden="true"><use href="#i-arrow-r"/></svg></a></li>
+            <li><a class="way tile tile--glass" href="#signup-form" data-interest="yard-sign"><span class="way__icon" aria-hidden="true"><svg class="icon"><use href="#i-sign"/></svg></span><span class="way__label">Get a yard sign</span><svg class="icon way__arrow" aria-hidden="true"><use href="#i-arrow-r"/></svg></a></li>
+            <li><a class="way tile tile--glass" href="#signup-form" data-interest="updates"><span class="way__icon" aria-hidden="true"><svg class="icon"><use href="#i-mail"/></svg></span><span class="way__label">Stay in the loop</span><svg class="icon way__arrow" aria-hidden="true"><use href="#i-arrow-r"/></svg></a></li>
           </ul>
         </div>
 
@@ -449,7 +458,7 @@
           <form id="signup-form" method="post" novalidate>
             <p class="form-alert preview-only"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span>Design preview: this form demonstrates the signup flow. Nothing is sent or saved.</span></p>
             <fieldset disabled>
-              <legend>Tell us how you’d like to help</legend>
+              <legend>Tell us what you’re interested in</legend>
               <div class="form-grid">
                 <div class="field">
                   <label for="email">Email address <span class="field__hint">(required)</span></label>
@@ -479,18 +488,18 @@
                 <label class="consent"><input type="checkbox" name="email_consent" id="email-consent" aria-describedby="form-error"><span id="email-consent-text">I’d like campaign updates by email. I can unsubscribe at any time.</span></label>
                 <label class="consent"><input type="checkbox" name="sms_consent" id="sms-consent" aria-describedby="form-error"><span id="sms-consent-text">I agree to receive recurring campaign texts from Scott Allison’s campaign at the number I provide, including texts sent with automated technology. Consent is optional. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help.</span></label>
               </div>
-              <p class="form-privacy">Providing a phone number does not enroll you in texts. <a class="nowrap" href="privacy.html">Read the privacy notice</a> and <a class="nowrap" href="terms.html">texting terms</a>.</p>
+              <p class="form-privacy">Giving us your number doesn’t sign you up for texts; only the box above does that. <a class="nowrap" href="privacy.html">Read the privacy notice</a> and <a class="nowrap" href="terms.html">texting terms</a>.</p>
               <div class="honeypot" aria-hidden="true"><label for="website">Leave this field empty</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
               <p id="form-error" class="form-error" role="alert"></p>
               <button id="submit-button" class="button button--orange button--lg button--block" type="submit">Preview my signup <span class="button__chip" aria-hidden="true"><svg class="icon"><use href="#i-arrow-r"/></svg></span></button>
             </fieldset>
             <div id="form-result" class="form-result" role="status" tabindex="-1" hidden></div>
           </form>
-          <noscript><p class="form-noscript">The signup form needs JavaScript. You can read Scott’s <a href="https://onyourballot.vote411.org/m/race-detail.do?id=68907575">public candidate questionnaire</a> or call the published campaign number on this page.</p></noscript>
+          <noscript><p class="form-noscript">This form needs JavaScript. You can still call <a href="tel:+19087216664">908-721-6664</a> or read my <a href="https://onyourballot.vote411.org/m/race-detail.do?id=68907575">VOTE411 answers</a>.</p></noscript>
         </div>
 
         <div class="direct" data-reveal>
-          <h3 class="direct__title">Connect with Scott</h3>
+          <h3 class="direct__title">Get in touch</h3>
           <div class="direct__links">
             <a class="contact-card tile" href="tel:+19087216664">
               <span class="icon-chip icon-chip--dark contact-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-phone"/></svg></span>
@@ -518,8 +527,11 @@
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="wordmark" href="#home" aria-label="Scott Allison for Clemson City Council, back to top">
-            <span class="wordmark__name">Scott Allison</span>
-            <span class="wordmark__office">For Clemson City Council</span>
+            <img class="wordmark__mark" src="assets/brand/mark.svg" alt="" width="40" height="40" decoding="async">
+            <span class="wordmark__text">
+              <span class="wordmark__name">Scott Allison</span>
+              <span class="wordmark__office">For Clemson City Council</span>
+            </span>
           </a>
           <p>Clemson, South Carolina<br>Election Day: Tuesday, <span class="nowrap">November 3, 2026</span></p>
         </div>
@@ -528,7 +540,7 @@
           <ul class="site-footer__links">
             <li><a href="#meet">Meet Scott</a></li>
             <li><a href="#priorities">Priorities</a></li>
-            <li><a href="#vote">Voting Information</a></li>
+            <li><a href="#vote">How to Vote</a></li>
             <li><a href="#join">Get Involved</a></li>
           </ul>
         </nav>

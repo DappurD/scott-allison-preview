@@ -10,7 +10,7 @@
   <link rel="preload" href="assets/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/brand/mark-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <script>document.documentElement.classList.add('js');</script>
   <script src="config.js" defer></script>
@@ -32,8 +32,11 @@
   <header class="site-header doc-header" data-header data-surface="dark">
     <div class="site-header__bar">
       <a class="wordmark" href="index.html" aria-label="Scott Allison for Clemson City Council, website home">
-        <span class="wordmark__name">Scott Allison</span>
-        <span class="wordmark__office">For Clemson City Council</span>
+        <img class="wordmark__mark" src="assets/brand/mark.svg" alt="" width="40" height="40" decoding="async">
+        <span class="wordmark__text">
+          <span class="wordmark__name">Scott Allison</span>
+          <span class="wordmark__office">For Clemson City Council</span>
+        </span>
       </a>
       <a class="button button--purple doc-back" href="index.html"><svg class="icon" aria-hidden="true"><use href="#i-arrow-l"/></svg><span>Back<span class="doc-back__more"> to website</span></span></a>
     </div>
@@ -45,7 +48,7 @@
       <div class="wrap">
         <p class="eyebrow eyebrow--on-dark preview-only"><span class="eyebrow__dot" aria-hidden="true"></span><span>Draft · Campaign and provider review required</span></p>
         <h1 class="page-hero__title">Texting terms</h1>
-        <p class="page-hero__lede"><span class="preview-only">Text messages are not enabled in this private preview. </span>These are proposed terms for review before a live texting program&nbsp;begins.</p>
+        <p class="page-hero__lede"><span class="preview-only">Texting isn’t turned on in this preview. </span>These are the proposed terms for campaign texts, for review before any messages go&nbsp;out.</p>
       </div>
     </header>
 
@@ -63,16 +66,16 @@
 
       <article class="prose">
         <h2 id="signup">Optional signup</h2>
-        <p>A separate, unchecked box asks for permission to receive recurring campaign texts. Providing a number without checking that box does not enroll you. The live program must identify the actual campaign sender and use approved disclosure language.</p>
+        <p>You only get texts if you check the texts box on the signup form. It starts unchecked, and giving us your number without checking it doesn’t sign you up. Every message will say who it’s from.<span class="preview-only"> The sender name and wording still have to be confirmed with the texting provider.</span></p>
 
         <h2 id="frequency">Frequency and cost</h2>
-        <p>Message frequency varies. Message and data rates may apply. Participation is optional.</p>
+        <p>Message frequency varies. Message and data rates may apply. Texts are optional; you can skip them and still get everything else from the campaign.</p>
 
         <h2 id="stop">Stop or get help</h2>
-        <p>The planned program will honor STOP to opt out and HELP for assistance. Those functions must be implemented and tested with the selected texting service before signup is activated.</p>
+        <p>Reply STOP to any text to stop them, or HELP for help.<span class="preview-only"> Both have to be set up and tested with the texting service before signup goes live.</span></p>
 
         <h2 id="privacy">Privacy</h2>
-        <p>Read the <a href="privacy.html">preview privacy notice</a>. A final campaign privacy policy, help contact, registered sender, and approved terms must be in place before recurring messages are sent.</p>
+        <p>How we handle your number is in the <a href="privacy.html">privacy notice</a>.<span class="preview-only"> A final privacy policy, help contact, registered sender, and approved terms are needed before any texts go out.</span></p>
 
         <p class="doc-end"><a class="button button--purple doc-back" href="index.html"><svg class="icon" aria-hidden="true"><use href="#i-arrow-l"/></svg><span>Back to website</span></a></p>
       </article>
@@ -85,8 +88,11 @@
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="wordmark" href="index.html" aria-label="Scott Allison for Clemson City Council, website home">
-            <span class="wordmark__name">Scott Allison</span>
-            <span class="wordmark__office">For Clemson City Council</span>
+            <img class="wordmark__mark" src="assets/brand/mark.svg" alt="" width="40" height="40" decoding="async">
+            <span class="wordmark__text">
+              <span class="wordmark__name">Scott Allison</span>
+              <span class="wordmark__office">For Clemson City Council</span>
+            </span>
           </a>
           <p>Clemson, South Carolina<br>Election Day: Tuesday, <span class="nowrap">November 3, 2026</span></p>
         </div>
@@ -95,7 +101,7 @@
           <ul class="site-footer__links">
             <li><a href="index.html#meet">Meet Scott</a></li>
             <li><a href="index.html#priorities">Priorities</a></li>
-            <li><a href="index.html#vote">Voting Information</a></li>
+            <li><a href="index.html#vote">How to Vote</a></li>
             <li><a href="index.html#join">Get Involved</a></li>
           </ul>
         </nav>

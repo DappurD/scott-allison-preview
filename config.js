@@ -2,7 +2,7 @@
 window.CAMPAIGN_CONFIG = Object.freeze({
   preview: true,
   formEndpoint: "",
-  officialDomain: "",
+  officialDomain: "https://scottforclemson.com",
   campaignName: "Scott Allison for Clemson City Council",
   consentVersion: "draft-2026-10-10",
   phone: "+19087216664",
