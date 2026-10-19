@@ -1,6 +1,10 @@
-/* Campaign-owned settings. This private concept deliberately starts in preview mode. */
+/* Campaign-owned settings. preview false is the public build (no preview labels; app.js still hides any .preview-only
+   element and marks html.is-live). contactForm false turns the contact form in Get Involved off: the card is hidden
+   and the call and Facebook cards take its place (the three "ways to help" tiles jump to them). To turn the form on,
+   set it to true and give formEndpoint a campaign-owned intake (see launch/launch-checklist.md). */
 window.CAMPAIGN_CONFIG = Object.freeze({
-  preview: true,
+  preview: false,
+  contactForm: false,
   formEndpoint: "",
   officialDomain: "https://scottforclemson.com",
   campaignName: "Scott Allison for Clemson City Council",

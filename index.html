@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#FBF9F5">
   <meta name="color-scheme" content="light">
   <meta name="robots" content="noindex, nofollow">
-  <title>Scott Allison for Clemson City Council | Website Concept</title>
-  <meta name="description" content="Scott Allison is running for Clemson City Council on November 3, 2026. Where he stands, how to vote, and how to help. Private website concept.">
+  <title>Scott Allison for Clemson City Council</title>
+  <meta name="description" content="Scott Allison is running for Clemson City Council on November 3, 2026. Where he stands, how to vote, and how to help.">
   <meta property="og:title" content="Scott Allison for Clemson City Council">
   <meta property="og:description" content="Our City. Our Council. See where Scott stands and make a plan to vote on November 3.">
   <meta property="og:type" content="website">
@@ -58,12 +58,6 @@
     <symbol id="i-fb" viewBox="0 0 24 24"><path style="fill:currentColor;stroke:none" d="M13.6 21v-7.3h2.5l.4-2.9h-2.9V9c0-.8.3-1.4 1.4-1.4h1.6V5a20 20 0 0 0-2.3-.1c-2.3 0-3.8 1.4-3.8 3.9v2H8v2.9h2.5V21Z"/></symbol>
   </svg>
 
-  <aside class="preview-note preview-only" aria-label="Preview status">
-    <div class="wrap preview-note__inner">
-      <p><span class="preview-note__dot" aria-hidden="true"></span><strong>Private design preview</strong><span class="preview-note__more"><span class="preview-note__sep" aria-hidden="true"> · </span>Campaign approval pending<span class="preview-note__extra"><span class="preview-note__sep" aria-hidden="true"> · </span>Proposed colors and copy</span></span></p>
-      <a href="sources.html">About this draft</a>
-    </div>
-  </aside>
 
   <!-- One glass pill. app.js sets data-surface to "dark" or "light" from the surface under the pill;
        it starts light (the cover is the light ground) and without JS it stays the light pill, which reads on
@@ -196,7 +190,7 @@
                 </span>
                 <span class="vote411-card__chip" aria-hidden="true"><svg class="icon"><use href="#i-arrow-ur"/></svg></span>
               </a>
-              <p class="source-note">Most of what you read here comes from my published VOTE411 answers; the class year is from my campaign Facebook page.<span class="preview-only"> Draft wording, for Scott to approve.</span></p>
+              <p class="source-note">Most of what you read here comes from my published VOTE411 answers.</p>
             </div>
 
             <!-- Photo gallery: nine photos the campaign supplied on October 19, 2026, exported by tools/gallery-build.py
@@ -206,11 +200,9 @@
                  photo and the night-out selfie run full width at 3:2 instead, the selfie from its own wide export (the
                  twin tile holds both pictures), so the six portraits stay in pairs. Fixed ratios with object-fit: cover and per-photo focal points in
                  styles.css. A slot without a photo would show as the dark "photo shelf" frame; on the live site
-                 (config.preview false, html.is-live) an empty slot is never shown. Captions in Scott's words came from
-                 the campaign; the ones still tagged "Draft caption" are drafts for him to confirm (then edit the caption
-                 and delete the tag). -->
+                 (config.preview false, html.is-live) an empty slot is never shown. Captions came from the campaign and
+                 stand as approved on October 19, 2026 (Scott will say if he wants any changed). -->
             <div class="gallery" role="group" aria-label="Photos">
-              <p class="gallery__note">Photos coming: family, and around Clemson.</p>
               <div class="gallery__grid">
               <figure class="photo-slot photo-slot--lead photo-slot--sign" data-slot="sign-town" data-reveal>
                 <picture>
@@ -224,14 +216,14 @@
                   <source type="image/avif" srcset="assets/gallery/family-640.avif 640w, assets/gallery/family-960.avif 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw">
                   <img src="assets/gallery/family-640.jpg" srcset="assets/gallery/family-640.jpg 640w, assets/gallery/family-960.jpg 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw" width="960" height="1200" alt="Four women standing between rows of vines at a vineyard" loading="lazy" decoding="async">
                 </picture>
-                <figcaption class="photo-slot__caption"><span class="photo-slot__text">My wife and our three daughters</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">My wife and our three daughters</span></figcaption>
               </figure>
               <figure class="photo-slot photo-slot--couple" data-slot="couple" data-reveal>
                 <picture>
                   <source type="image/avif" srcset="assets/gallery/couple-640.avif 640w, assets/gallery/couple-960.avif 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw">
                   <img src="assets/gallery/couple-640.jpg" srcset="assets/gallery/couple-640.jpg 640w, assets/gallery/couple-960.jpg 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw" width="960" height="1200" alt="Scott Allison and a woman in evening wear on a lawn beside a lake" loading="lazy" decoding="async">
                 </picture>
-                <figcaption class="photo-slot__caption"><span class="photo-slot__text">My wife and me</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">My wife and me</span></figcaption>
               </figure>
               <figure class="photo-slot photo-slot--walhalla" data-slot="walhalla" data-reveal>
                 <picture>
@@ -245,7 +237,7 @@
                   <source type="image/avif" srcset="assets/gallery/baby-downtown-640.avif 640w, assets/gallery/baby-downtown-768.avif 768w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw">
                   <img src="assets/gallery/baby-downtown-640.jpg" srcset="assets/gallery/baby-downtown-640.jpg 640w, assets/gallery/baby-downtown-768.jpg 768w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw" width="768" height="960" alt="Scott Allison holding a sleeping baby on a downtown sidewalk" loading="lazy" decoding="async">
                 </picture>
-                <figcaption class="photo-slot__caption"><span class="photo-slot__text">The newest member of the family</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">The newest member of the family</span></figcaption>
               </figure>
               <figure class="photo-slot photo-slot--twin photo-slot--night" data-slot="night-out" data-reveal>
                 <picture class="photo-slot__tall">
@@ -256,21 +248,21 @@
                   <source type="image/avif" srcset="assets/gallery/night-out-wide-640.avif 640w, assets/gallery/night-out-wide-1000.avif 1000w" sizes="(min-width: 1000px) 470px, calc(100vw - 32px)">
                   <img src="assets/gallery/night-out-wide-640.jpg" srcset="assets/gallery/night-out-wide-640.jpg 640w, assets/gallery/night-out-wide-1000.jpg 1000w" sizes="(min-width: 1000px) 470px, calc(100vw - 32px)" width="1000" height="667" alt="Scott Allison in a tuxedo beside a woman in a floral dress, with skyscrapers and a cathedral behind them" loading="lazy" decoding="async">
                 </picture>
-                <figcaption class="photo-slot__caption"><span class="photo-slot__text">My wife and me, a night out in New York</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">My wife and me, a night out in New York</span></figcaption>
               </figure>
               <figure class="photo-slot photo-slot--gameday" data-slot="game-day" data-reveal>
                 <picture>
                   <source type="image/avif" srcset="assets/gallery/game-day-640.avif 640w, assets/gallery/game-day-960.avif 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw">
                   <img src="assets/gallery/game-day-640.jpg" srcset="assets/gallery/game-day-640.jpg 640w, assets/gallery/game-day-960.jpg 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw" width="960" height="1200" alt="Scott Allison at a tailgate holding a toddler, with a child in a Clemson jersey beside him" loading="lazy" decoding="async">
                 </picture>
-                <figcaption class="photo-slot__caption"><span class="photo-slot__text">Game day in Clemson</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">Game day in Clemson</span></figcaption>
               </figure>
               <figure class="photo-slot photo-slot--tailgate" data-slot="tailgate" data-reveal>
                 <picture>
                   <source type="image/avif" srcset="assets/gallery/tailgate-640.avif 640w, assets/gallery/tailgate-960.avif 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw">
                   <img src="assets/gallery/tailgate-640.jpg" srcset="assets/gallery/tailgate-640.jpg 640w, assets/gallery/tailgate-960.jpg 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw" width="960" height="1200" alt="Scott Allison holding a baby under an orange tailgate tent" loading="lazy" decoding="async">
                 </picture>
-                <figcaption class="photo-slot__caption"><span class="photo-slot__text">Tailgating with the littlest fan</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">Tailgating with the littlest fan</span></figcaption>
               </figure>
               <figure class="photo-slot photo-slot--span photo-slot--crew" data-slot="door-hangers" data-reveal>
                 <picture>
@@ -488,7 +480,6 @@
         <div class="form-card" data-reveal>
           <p class="form-card__kicker"><span aria-hidden="true"></span>Contact the campaign</p>
           <form id="signup-form" method="post" novalidate>
-            <p class="form-alert preview-only"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span>Design preview: this form demonstrates the signup flow. Nothing is sent or saved.</span></p>
             <fieldset disabled>
               <legend>Tell us what you’re interested in</legend>
               <div class="form-grid">
@@ -523,14 +514,14 @@
               <p class="form-privacy">Giving us your number doesn’t sign you up for texts; only the box above does that. <a class="nowrap" href="privacy.html">Read the privacy notice</a> and <a class="nowrap" href="terms.html">texting terms</a>.</p>
               <div class="honeypot" aria-hidden="true"><label for="website">Leave this field empty</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
               <p id="form-error" class="form-error" role="alert"></p>
-              <button id="submit-button" class="button button--orange button--lg button--block" type="submit">Preview my signup <span class="button__chip" aria-hidden="true"><svg class="icon"><use href="#i-arrow-r"/></svg></span></button>
+              <button id="submit-button" class="button button--orange button--lg button--block" type="submit">Send my request <span class="button__chip" aria-hidden="true"><svg class="icon"><use href="#i-arrow-r"/></svg></span></button>
             </fieldset>
             <div id="form-result" class="form-result" role="status" tabindex="-1" hidden></div>
           </form>
           <noscript><p class="form-noscript">This form needs JavaScript. You can still call <a href="tel:+19087216664">908-721-6664</a> or read my <a href="https://onyourballot.vote411.org/m/race-detail.do?id=68907575">VOTE411 answers</a>.</p></noscript>
         </div>
 
-        <div class="direct" data-reveal>
+        <div class="direct" id="contact" data-reveal>
           <h3 class="direct__title">Get in touch</h3>
           <div class="direct__links">
             <a class="contact-card tile" href="tel:+19087216664">
@@ -593,10 +584,8 @@
         </div>
       </div>
       <div class="site-footer__bottom">
-        <p class="paid-for"><span class="paid-for__box">Paid for by <span class="paid-for__name preview-only">[Campaign committee name, to be supplied by the campaign]</span></span></p>
-        <p class="preview-only"><span class="nowrap">Private design concept.</span> <span class="nowrap">Proposed colors and copy.</span> <span class="nowrap">Campaign approval pending.</span></p>
+        <p class="paid-for"><span class="paid-for__box">Paid for by <span class="paid-for__name">Scott Allison for Clemson City Council</span></span></p>
         <p>Lake Hartwell photo: <span class="nowrap">Harrison Keely</span>, <a class="nowrap" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer license">CC BY 4.0<span class="sr-only"> license (opens in a new tab)</span></a>, cropped and color-adjusted</p>
-        <p class="preview-only">© 2026 · Website concept</p>
       </div>
     </div>
   </footer>

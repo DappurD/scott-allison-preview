@@ -210,6 +210,10 @@
   /* ---- Signup form (payload and validation follow launch/form-contract.json) */
   const form=document.querySelector('#signup-form');
   if(!form)return;
+  /* Contact form off (config.contactForm false): the card is hidden (html.no-form; styles.css lays Get Involved out
+     without it) and the "ways to help" tiles jump to the call and Facebook cards (#contact) instead of the form. */
+  const formOff=config.contactForm===false;
+  if(formOff){root.classList.add('no-form');document.querySelectorAll('[data-interest]').forEach(link=>{link.setAttribute('href','#contact');});}
   const fields=form.querySelector('fieldset'),error=document.querySelector('#form-error'),result=document.querySelector('#form-result'),button=document.querySelector('#submit-button');
   fields.disabled=false; // the form ships disabled, so it can never submit natively (contact details in a URL) without this script
   const startedAt=Date.now();
@@ -222,7 +226,7 @@
   const interest=document.querySelector('#interest');
   document.querySelectorAll('[data-interest]').forEach(link=>link.addEventListener('click',e=>{
     const value=link.getAttribute('data-interest');
-    if(!interest || fields.hidden || ![...interest.options].some(o=>o.value===value))return;
+    if(formOff || !interest || fields.hidden || ![...interest.options].some(o=>o.value===value))return;
     e.preventDefault();
     interest.value=value;
     interest.dispatchEvent(new Event('change',{bubbles:true}));
