@@ -199,13 +199,16 @@
               <p class="source-note">Most of what you read here comes from my published VOTE411 answers; the class year is from my campaign Facebook page.<span class="preview-only"> Draft wording, for Scott to approve.</span></p>
             </div>
 
-            <!-- Photo gallery: four photos the campaign supplied on October 19, 2026, exported by tools/gallery-build.py
-                 (AVIF with a JPEG fallback, the originals stay out of the repo). One lead slot (3:2, 16:9 on tablets) and
-                 three tiles (4:5, 1:1 on tablets and phones; the last is the phone's wide 21:9 tile), fixed ratios with
-                 object-fit: cover and per-photo focal points in styles.css. A slot without a photo would show as the
-                 dark "photo shelf" frame; on the live site (config.preview false, html.is-live) an empty slot is never
-                 shown. The captions are drafts: once Scott confirms the wording, edit the caption and delete the
-                 "Draft caption" tag. The children's photos from the same batch are held back until their parents agree. -->
+            <!-- Photo gallery: nine photos the campaign supplied on October 19, 2026, exported by tools/gallery-build.py
+                 (AVIF with a JPEG fallback, the originals stay out of the repo). One lead slot (3:2, 16:9 on tablets),
+                 seven 4:5 tiles (1:1 on tablets and phones) and a last landscape tile that spans two columns to complete
+                 the row. Where the tiles run two across (phones, the narrow aside between 1000 and about 1090px) the crew
+                 photo and the night-out selfie run full width at 3:2 instead, the selfie from its own wide export (the
+                 twin tile holds both pictures), so the six portraits stay in pairs. Fixed ratios with object-fit: cover and per-photo focal points in
+                 styles.css. A slot without a photo would show as the dark "photo shelf" frame; on the live site
+                 (config.preview false, html.is-live) an empty slot is never shown. Captions in Scott's words came from
+                 the campaign; the ones still tagged "Draft caption" are drafts for him to confirm (then edit the caption
+                 and delete the tag). -->
             <div class="gallery" role="group" aria-label="Photos">
               <p class="gallery__note">Photos coming: family, and around Clemson.</p>
               <div class="gallery__grid">
@@ -230,14 +233,52 @@
                 </picture>
                 <figcaption class="photo-slot__caption"><span class="photo-slot__text">My wife and me</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
               </figure>
-              <figure class="photo-slot photo-slot--wide photo-slot--crew" data-slot="flyer-crew" data-reveal>
+              <figure class="photo-slot photo-slot--walhalla" data-slot="walhalla" data-reveal>
                 <picture>
-                  <source type="image/avif" srcset="assets/gallery/flyer-crew-640.avif 640w, assets/gallery/flyer-crew-960.avif 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, calc(100vw - 32px)">
-                  <img src="assets/gallery/flyer-crew-640.jpg" srcset="assets/gallery/flyer-crew-640.jpg 640w, assets/gallery/flyer-crew-960.jpg 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, calc(100vw - 32px)" width="960" height="1200" alt="Scott Allison with four young men holding campaign door hangers in the back of a pickup truck" loading="lazy" decoding="async">
+                  <source type="image/avif" srcset="assets/gallery/walhalla-640.avif 640w, assets/gallery/walhalla-960.avif 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw">
+                  <img src="assets/gallery/walhalla-640.jpg" srcset="assets/gallery/walhalla-640.jpg 640w, assets/gallery/walhalla-960.jpg 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw" width="960" height="1200" alt="Scott Allison and another man beside a Walhalla Strong poster on an easel at an indoor event" loading="lazy" decoding="async">
+                </picture>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">Charity event for the downtown Walhalla fire</span></figcaption>
+              </figure>
+              <figure class="photo-slot photo-slot--baby" data-slot="baby-downtown" data-reveal>
+                <picture>
+                  <source type="image/avif" srcset="assets/gallery/baby-downtown-640.avif 640w, assets/gallery/baby-downtown-768.avif 768w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw">
+                  <img src="assets/gallery/baby-downtown-640.jpg" srcset="assets/gallery/baby-downtown-640.jpg 640w, assets/gallery/baby-downtown-768.jpg 768w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw" width="768" height="960" alt="Scott Allison holding a sleeping baby on a downtown sidewalk" loading="lazy" decoding="async">
+                </picture>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">The newest member of the family</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
+              </figure>
+              <figure class="photo-slot photo-slot--twin photo-slot--night" data-slot="night-out" data-reveal>
+                <picture class="photo-slot__tall">
+                  <source type="image/avif" srcset="assets/gallery/night-out-640.avif 640w, assets/gallery/night-out-960.avif 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw">
+                  <img src="assets/gallery/night-out-640.jpg" srcset="assets/gallery/night-out-640.jpg 640w, assets/gallery/night-out-960.jpg 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw" width="960" height="1200" alt="Scott Allison in a tuxedo beside a woman in a floral dress, with skyscrapers and a cathedral behind them" loading="lazy" decoding="async">
+                </picture>
+                <picture class="photo-slot__wide">
+                  <source type="image/avif" srcset="assets/gallery/night-out-wide-640.avif 640w, assets/gallery/night-out-wide-1000.avif 1000w" sizes="(min-width: 1000px) 470px, calc(100vw - 32px)">
+                  <img src="assets/gallery/night-out-wide-640.jpg" srcset="assets/gallery/night-out-wide-640.jpg 640w, assets/gallery/night-out-wide-1000.jpg 1000w" sizes="(min-width: 1000px) 470px, calc(100vw - 32px)" width="1000" height="667" alt="Scott Allison in a tuxedo beside a woman in a floral dress, with skyscrapers and a cathedral behind them" loading="lazy" decoding="async">
+                </picture>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">My wife and me, a night out in New York</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
+              </figure>
+              <figure class="photo-slot photo-slot--gameday" data-slot="game-day" data-reveal>
+                <picture>
+                  <source type="image/avif" srcset="assets/gallery/game-day-640.avif 640w, assets/gallery/game-day-960.avif 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw">
+                  <img src="assets/gallery/game-day-640.jpg" srcset="assets/gallery/game-day-640.jpg 640w, assets/gallery/game-day-960.jpg 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw" width="960" height="1200" alt="Scott Allison at a tailgate holding a toddler, with a child in a Clemson jersey beside him" loading="lazy" decoding="async">
+                </picture>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">Game day in Clemson</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
+              </figure>
+              <figure class="photo-slot photo-slot--tailgate" data-slot="tailgate" data-reveal>
+                <picture>
+                  <source type="image/avif" srcset="assets/gallery/tailgate-640.avif 640w, assets/gallery/tailgate-960.avif 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw">
+                  <img src="assets/gallery/tailgate-640.jpg" srcset="assets/gallery/tailgate-640.jpg 640w, assets/gallery/tailgate-960.jpg 960w" sizes="(min-width: 1000px) 230px, (min-width: 500px) 30vw, 50vw" width="960" height="1200" alt="Scott Allison holding a baby under an orange tailgate tent" loading="lazy" decoding="async">
+                </picture>
+                <figcaption class="photo-slot__caption"><span class="photo-slot__text">Tailgating with the littlest fan</span> <span class="photo-slot__draft preview-only">Draft caption, confirm with Scott</span></figcaption>
+              </figure>
+              <figure class="photo-slot photo-slot--span photo-slot--crew" data-slot="door-hangers" data-reveal>
+                <picture>
+                  <source type="image/avif" srcset="assets/gallery/door-hangers-640.avif 640w, assets/gallery/door-hangers-1000.avif 1000w" sizes="(min-width: 1000px) 470px, (min-width: 502px) 62vw, calc(100vw - 32px)">
+                  <img src="assets/gallery/door-hangers-640.jpg" srcset="assets/gallery/door-hangers-640.jpg 640w, assets/gallery/door-hangers-1000.jpg 1000w" sizes="(min-width: 1000px) 470px, (min-width: 502px) 62vw, calc(100vw - 32px)" width="1000" height="667" alt="Scott Allison with four young men holding campaign door hangers in the back of a pickup truck" loading="lazy" decoding="async">
                 </picture>
                 <figcaption class="photo-slot__caption"><span class="photo-slot__text">As Chapter Advisor to the Pikes, I had 10 volunteers delivering door hangers!</span></figcaption>
               </figure>
-              </div>
             </div>
           </div>
         </div>

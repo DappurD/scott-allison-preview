@@ -1017,7 +1017,7 @@ html.menu-open { overflow: hidden; }
   }
 }
 @container gallery (max-width: 319.98px) {
-  .photo-slot:not(.photo-slot--lead):not(.photo-slot--wide) { --ratio: 4 / 5; }
+  .photo-slot:not(.photo-slot--lead):not(.photo-slot--wide):not(.photo-slot--span):not(.photo-slot--twin) { --ratio: 4 / 5; }
 }
 @supports (grid-template-rows: subgrid) {
   .gallery__grid { row-gap: 0; align-items: stretch; }
@@ -1037,7 +1037,30 @@ html.menu-open { overflow: hidden; }
 .photo-slot > picture > img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .photo-slot--family > picture > img { object-position: 50% 42%; }
 .photo-slot--couple > picture > img { object-position: 50% 38%; }
-.photo-slot--crew > picture > img { object-position: 50% 30%; }
+.photo-slot--walhalla > picture > img { object-position: 50% 40%; }
+.photo-slot--night > picture > img { object-position: 50% 55%; }
+.photo-slot--gameday > picture > img, .photo-slot--tailgate > picture > img { object-position: 50% 40%; }
+.photo-slot--crew > picture > img { object-position: 55% 45%; }
+/* The landscapes. Where the tiles run two across (phones, and the aside between 1000 and about 1090px wide) the
+   crew photo runs full width at 3:2 like the sign, and so does the night-out selfie from its own wide export (the
+   twin tile carries a tall and a wide picture; two faces side by side crop to landscape well), which keeps the six
+   portraits in pairs. Where the tiles run three across, the crew tile spans two columns as a landscape as tall as
+   the row beside it (tiles at 4:5: (2w + 12px) / 1.25w; at 1:1: (2w + 12px) / w) and the selfie is a tile like the
+   others. A hidden picture is never fetched: both load lazily. */
+.gallery__grid > .photo-slot--span, .gallery__grid > .photo-slot--twin { grid-column: 1 / -1; --ratio: 3 / 2; }
+.photo-slot--twin > .photo-slot__tall { display: none; }
+@container gallery (min-width: 470px) {
+  .gallery__grid > .photo-slot--span { grid-column: span 2; --ratio: 1.645; }
+  .gallery__grid > .photo-slot--twin { grid-column: auto; --ratio: 4 / 5; }
+  .photo-slot--twin > .photo-slot__tall { display: block; }
+  .photo-slot--twin > .photo-slot__wide { display: none; }
+}
+@media (max-width: 999.98px) {
+  @container gallery (min-width: 470px) {
+    .gallery__grid > .photo-slot--span { --ratio: 2.05; }
+    .gallery__grid > .photo-slot--twin { --ratio: 1 / 1; }
+  }
+}
 .photo-slot:has(> img, > picture) .photo-slot__frame { display: none; }
 .photo-slot__frame {
   position: relative;
